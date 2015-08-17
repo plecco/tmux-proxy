@@ -23,18 +23,17 @@ Add script to enable / disable proxy in tmux:
   
 Set proxy
 
-    tmux setenv -g http_proxy proxy-ip-address
+    enable_proxy(){
+      tmux setenv -g http_proxy proxy-ip-address
+      tmux source-file ~/.tmux.conf  # reload tmux
+    }
   
 Unset proxy
 
-    tmux setenv -gu http_proxy
-
-Reload TMUX environment:
-
-    # type this in terminal
-    $ tmux source-file ~/.tmux.conf
-
-If format strings are added to `status-right`, they should now be visible.
+    disable_proxy(){
+      tmux setenv -gu http_proxy
+      tmux source-file ~/.tmux.conf  # reload tmux
+    }
 
 ### TODO
 
